@@ -20,7 +20,7 @@ class Login {
         $stmt = $this->conn->prepare($query);
 
         // Debugging: Display query
-        echo "Debug: Login query: $query<br>";
+        // echo "Debug: Login query: $query<br>";
 
         $stmt->bind_param("ss", $this->username, $this->password);
         $stmt->execute();
@@ -32,7 +32,7 @@ class Login {
             return true;
         } else {
             // Debugging: No rows found
-            echo "Debug: No rows found for username: {$this->username}<br>";
+            // echo "Debug: No rows found for username: {$this->username}<br>";
         }
         return false;
     }
@@ -76,8 +76,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $login->password = $_POST['password'];
 
     // Debugging: Cek nilai input dari form
-    echo "Input username: " . $login->username . "<br>";
-    echo "Input password: " . $login->password . "<br>";
+    // echo "Input username: " . $login->username . "<br>";
+    // echo "Input password: " . $login->password . "<br>";
 
     if ($login->authenticate()) {
         $_SESSION['user_id'] = $login->user_id;

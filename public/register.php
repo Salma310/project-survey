@@ -30,12 +30,12 @@ class Register {
     }
 
     public function registerUser() {
-        echo "Memulai proses registrasi...<br>";
+        // echo "Memulai proses registrasi...<br>";
         $query_user = "INSERT INTO m_user (username, password, role) VALUES ('$this->username', '$this->password', '$this->role')";
         $result_user = $this->conn->query($query_user);
 
         if ($result_user) {
-            echo "User berhasil dimasukkan ke m_user!<br>";
+            // echo "User berhasil dimasukkan ke m_user!<br>";
             $user_id = $this->conn->insert_id;
 
             $query_role = "";
@@ -59,20 +59,20 @@ class Register {
                     $query_role = "INSERT INTO p_industri (user_id, first_name, last_name, email, phone_number, city, country) VALUES ('$user_id', '$this->first_name', '$this->last_name', '$this->email', '$this->phone_number', '$this->city', '$this->country')";
                     break;
                 default:
-                    echo "Role tidak dikenal!<br>";
+                    // echo "Role tidak dikenal!<br>";
                     return false;
             }
 
             $result_role = $this->conn->query($query_role);
             if ($result_role) {
-                echo "Data berhasil dimasukkan ke tabel $this->role!<br>";
+                // echo "Data berhasil dimasukkan ke tabel $this->role!<br>";
                 return true;
             } else {
-                echo "Error dalam memasukkan data ke tabel $this->role: " . $this->conn->error . "<br>";
+                // echo "Error dalam memasukkan data ke tabel $this->role: " . $this->conn->error . "<br>";
                 return false;
             }
         } else {
-            echo "Error dalam memasukkan data ke m_user: " . $this->conn->error . "<br>";
+            // echo "Error dalam memasukkan data ke m_user: " . $this->conn->error . "<br>";
             return false;
         }
     }
